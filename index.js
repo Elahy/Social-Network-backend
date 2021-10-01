@@ -10,6 +10,9 @@ const postRoute = require("./routes/posts");
 
 dotenv.config();
 
+//port
+const port = process.env.PORT || 8800;
+
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(console.log("connected to DB"));
@@ -23,6 +26,6 @@ app.use("/users", userRoute);
 app.use("/auth", authRoute);
 app.use("/posts", postRoute);
 
-app.listen(8800, () => {
+app.listen(process.env.PORT || port, () => {
   console.log("Backend is running at port 8800");
 });
