@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
       user.password
     );
     !validPassword && res.status(400).json("Wrong Password!");
-
+    res.header("Access-Control-Allow-Origin", "*");
     res.status(200).json(user);
   } catch (err) {
     res.status(500).json(err);
