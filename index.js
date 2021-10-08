@@ -7,6 +7,7 @@ const app = express();
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -25,6 +26,8 @@ app.use(morgan("common"));
 app.use("/users", userRoute);
 app.use("/auth", authRoute);
 app.use("/posts", postRoute);
+
+app.use(cors());
 
 app.listen(process.env.PORT || port, () => {
   console.log("Backend is running at port 8800");
